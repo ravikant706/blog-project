@@ -40,6 +40,10 @@ app.get('/compose', function(req, res){
   res.render('compose');
 })
 
+app.get('/', function(req, res){
+  res.render('post', {newPost: posts})  
+})
+
 // data come from compose file and go home file and res.redirect() post data in global veriabal
 app.post('/compose', function(req, res){
   // console.log(req.body.postTitle)  //data goes to hyper
@@ -59,10 +63,11 @@ app.get('/posts/:postName', function(req, res){
   posts.forEach(function(post){
     const storedTitle = _.lowerCase(post.title);
     if (storedTitle === requestedTitle) {
-      console.log("Match Found!")
-    } else {
-      console.log("Not a Match")
-    };
+      res.render('post', {
+        title: post.title,
+        content: post.contant
+      });
+    }
   });
 
 });
