@@ -7,7 +7,10 @@
     <% posts.forEach(function(post){ %>
 
         <h1><%=post.title%></h1> 
-        <p><%=post.contant.substring(0, 100) + " ..."%></p> 
+        <p>
+            <%=post.contant.substring(0, 100) + " ..."%>
+            <a href="/posts/<%=post.title%>">read more</a>
+        </p> 
     <% }); %>
 
 <%- include('partials/footer'); -%> <!-- alwayes write full path within single quete'' -->  
